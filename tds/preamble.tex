@@ -1,0 +1,72 @@
+\setlength{\parindent}{0pt} % Disable the indent for new paragraphs
+
+% Aesthetic packages
+\usepackage[T1]{fontenc} % select T1 font encoding: suitable for Western European Latin scripts
+\usepackage[most]{tcolorbox}  % for styled boxes
+\usepackage[a4paper,margin=25mm]{geometry} % set the margin for a4paper
+% \usepackage{calligra}
+
+% Math packages:
+\usepackage{amsmath,amssymb}  % Enables advanced math environments like align, gather, and equation.
+\usepackage{amsthm}  % Theorem infra
+\usepackage{bbm}  % For indicator
+\usepackage{amssymb}  % Provides additional math symbols (e.g., \mathbb, \leqslant).
+
+% Customize enumerate for no indentation
+\usepackage{enumitem}
+
+% Answer enviroment with enumerate
+\newenvironment{answerenum}{
+    \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=0pt, labelindent=0pt, itemindent=0pt]
+}{
+    \end{enumerate}
+}
+
+% macro pour le titre
+\newcommand{\demo}{\noindent\textbf{Demonstration: }}
+\newcommand{\rpos}{\noindent\textbf{Réponse: }}
+
+% indicator function
+\newcommand{\ind}{\mathbbm{1}}
+
+
+% Exercise Box
+\newtcolorbox{exercisebox}[1]{
+  width=\textwidth,
+  colback=gray!10,
+  colframe=black,
+  boxrule=0.8pt,
+  arc=4pt,
+  fonttitle=\bfseries,
+  title=Exercise #1,
+  left=10pt, right=10pt,     % horizontal padding inside the box
+  top=6pt, bottom=6pt        % vertical padding
+}
+
+% Answer Box
+\newtcolorbox{answerbox}{
+  width=\textwidth,
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  boxrule=0.8pt,
+  arc=4pt,
+  fonttitle=\bfseries,
+  title=Answer,
+  left=10pt, right=10pt,
+  top=6pt, bottom=6pt
+}
+
+% Define theorem-like environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{exercise}[definition]{Exercise}
+
