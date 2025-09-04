@@ -1,0 +1,40 @@
+\documentclass[a4paper, 12pt]{article}
+
+\input{../preamble.tex}
+
+\begin{document}
+
+    \title{Notes}
+    \author{X. Z}
+    \date{\today}
+    \maketitle
+
+    \section{Joint distribution}
+
+    Let $X$ and $Y$ be two random variables. If $X$ and $Y$ are linearly related, i.e., there exist $a\in \mathbb{R}$ such that $Y = aX$.
+    We are interested in determining the joint distribution of $(X,Y)$, given the distribution of $X$.
+
+    Let $f_X(x)$ be the probability density function (PDF) of $X$. We calculate the probability of the event $(X,Y) \in A \times B$ for measurable sets $A$ and $B$ as follows:
+
+    \[
+      \mathbb{P}\bigl((X,Y)\in A\times B\bigr)
+      =\iint 1_{A\times B}(x,y)\, f_X(x)\,\delta\bigl(y-ax\bigr)\,dx\,dy
+      =\int_A 1_B(ax)\, f_X(x)\,dx.
+    \]
+    
+    For $a\neq 0$, the marginal of $Y$ is
+    \[
+      f_Y(y)=\int f_X(x)\,\delta\bigl(y-ax\bigr)\,dx
+            =\frac{1}{|a|}\,f_X\!\left(\frac{y}{a}\right).
+    \]
+
+    The joint distribution of $(X,Y)$ is concentrated on the line $y=ax$ and can be written (in the distributional sense) as
+    \[
+      f_{X,Y}(x,y)=f_X(x)\,\delta\bigl(y-ax\bigr).
+    \]
+
+    To make the geometric interpretation clearer, note that $ (X, Y) = X(1, a)$. The vector $(1, a)$ is a direction vector of the line $y = ax$ through the origin.
+    We can make a change of variables to evaluate $\mathbb{P}((X,Y) \in \{(x, y) \mid y = ax\})$ by integrating over the direction $(1, a)$.
+    
+    
+    \end{document}

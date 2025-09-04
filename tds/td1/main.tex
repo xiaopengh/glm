@@ -98,8 +98,66 @@
             Because $P_{F_i}$ is an orthogonal projection matrix onto a subspace of dimension $d_i$, $P_{F_i}^T = P_{F_i}$.
 
         \item Since we have already shown that the random vectors $P_{F_i}Z$ and $P_{F_j}Z$ are independent for $i \neq j$, it follows that any functions of these independent random vectors are also independent. In particular, the random variables $\frac{\|P_{F_i}(Z - \boldsymbol{\mu})\|^2}{\sigma^2}$ and $\frac{\|P_{F_j}(Z - \boldsymbol{\mu})\|^2}{\sigma^2}$ are functions of the independent random vectors $P_{F_i}Z$ and $P_{F_j}Z$, respectively. Therefore, these random variables are also independent for $i \neq j$.
+
+        \item \textbf{Final note:} characteristic function of any distribution is:
+            \[ \phi_Z(t) = \mathbb{E}(e^{i\langle t,Z\rangle}) \]
+            
+            \textbf{Properties of Fourier Transform:}
+
+            \textbf{General Formalization:}
+            For a function $f: \mathbb{R} \to \mathbb{C}$, the Fourier transform is defined as:
+            \[ \hat{f}(\xi) = \mathcal{F}[f](\xi) = \int_{-\infty}^{\infty} f(t) e^{-2\pi i \xi t} dt \]
+
+            The inverse Fourier transform is:
+            \[ f(t) = \mathcal{F}^{-1}[\hat{f}](t) = \int_{-\infty}^{\infty} \hat{f}(\xi) e^{2\pi i \xi t} d\xi \]
+
+            \textbf{Key Properties:}
+            \begin{enumerate}
+                \item \textbf{Linearity:} $\mathcal{F}[af + bg] = a\mathcal{F}[f] + b\mathcal{F}[g]$
+                
+                \item \textbf{Time shifting:} $\mathcal{F}[f(t-a)](\xi) = e^{-2\pi i a \xi} \hat{f}(\xi)$
+                
+                \item \textbf{Frequency shifting:} $\mathcal{F}[e^{2\pi i a t} f(t)](\xi) = \hat{f}(\xi - a)$
+                
+                \item \textbf{Scaling:} $\mathcal{F}[f(at)](\xi) = \frac{1}{|a|} \hat{f}\left(\frac{\xi}{a}\right)$
+                
+                \item \textbf{Conjugation:} $\mathcal{F}[\overline{f(t)}](\xi) = \overline{\hat{f}(-\xi)}$
+                
+                \item \textbf{Time reversal:} $\mathcal{F}[f(-t)](\xi) = \hat{f}(-\xi)$
+                
+                \item \textbf{Differentiation:} $\mathcal{F}[f'(t)](\xi) = 2\pi i \xi \hat{f}(\xi)$
+                
+                \item \textbf{Integration:} $\mathcal{F}\left[\int_{-\infty}^t f(\tau) d\tau\right](\xi) = \frac{\hat{f}(\xi)}{2\pi i \xi}$
+                
+                \item \textbf{Convolution theorem:} $\mathcal{F}[(f * g)(t)](\xi) = \hat{f}(\xi) \hat{g}(\xi)$
+                
+                \item \textbf{Parseval's theorem:} $\int_{-\infty}^{\infty} |f(t)|^2 dt = \int_{-\infty}^{\infty} |\hat{f}(\xi)|^2 d\xi$
+                
+                \item \textbf{Plancherel's theorem:} $\langle f, g \rangle = \langle \hat{f}, \hat{g} \rangle$
+            \end{enumerate}
+
+            \textbf{Relation to Fourier transform (answer to the question).}
+            The characteristic function is the Fourier transform of the law (probability measure) of $Z$. If $Z$ has a density $f_Z$ on $\mathbb{R}^n$:
+            \[
+              \phi_Z(t)=\int_{\mathbb{R}^n} e^{i\,t^\top x}\,f_Z(x)\,dx.
+            \]
+            Using the “angular-frequency” convention $\mathcal{F}_\omega[f](\omega)=\int f(x)e^{-i\,\omega^\top x}dx$, one has
+            \[
+              \phi_Z(t)=\mathcal{F}_\omega[f_Z](-t).
+            \]
+            With the $2\pi$-normalized convention,
+            \[
+              \hat f_Z(\xi)=\int f_Z(x)\,e^{-2\pi i\,\xi^\top x}\,dx,
+              \qquad\Rightarrow\qquad
+              \phi_Z(t)=\hat f_Z\!\left(-\tfrac{t}{2\pi}\right).
+            \]
+            When a density exists, an inversion formula is
+            \[
+              f_Z(x)=\frac{1}{(2\pi)^n}\int_{\mathbb{R}^n} e^{-i\,t^\top x}\,\phi_Z(t)\,dt,
+            \]
+            with the constant adjusted to the chosen Fourier convention.
     \end{answerenum}
 
-
+    
 
 \end{document}
